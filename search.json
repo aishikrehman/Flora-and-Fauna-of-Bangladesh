@@ -1,0 +1,10 @@
+---
+---
+[
+  {% for page in site.plants %}
+    {
+      "title"    : "{{ page.Specises | escape }}",
+      "url"      : "{{ site.baseurl }}{{ page.url }}",
+    } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
