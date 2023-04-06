@@ -1,2 +1,0 @@
-# Flora-and-Fauna-of-Bangladesh
-PLANT SPECIES IDENTIFICATION MODULE
