@@ -30,5 +30,4 @@ url: "https://flora.aishikrehman.com" # the base hostname & protocol for your si
 # theme: minima
 
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
