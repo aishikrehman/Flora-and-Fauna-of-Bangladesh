@@ -1,0 +1,25 @@
+<aside class="docs-sidebar">
+    <nav class="docs-links py-md-4 collapse" id="docs-docs-nav" aria-label="Docs navigation">
+        <ul class="list-unstyled mb-0 py-3 pt-md-1">
+            <li class="mb-1">
+                <em class="btn d-inline-flex align-items-center" data-bs-toggle="collapse show"
+                    data-bs-target="#Letters-and-Alphabet-1" aria-expanded="true">Species</em>
+                <div class="collapse show" id="Letters-and-Alphabet-1">
+                    <ul class="list-unstyled fw-normal pb-1 small">
+                        {% assign pages = site.pages | where: "layout", "plant" | sort: "Species" %}
+                        {% for page in pages %}
+                        <li>
+                            <a href="{{ page.url }}" class="d-inline-flex align-items-center rounded">{{ forloop.index }}. {{ page.Species }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+
+            <li class="my-3 mx-4 border-top"></li>
+            <li>
+                <a href="#" class="d-inline-flex align-items-center">Add New Flora</a>
+            </li>
+        </ul>
+    </nav>
+</aside>
