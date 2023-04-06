@@ -1,0 +1,33 @@
+title: Flora and Fauna of Bangladesh
+author: 
+  name: Aishik Rehman
+  email: hello@aishikrehman.com
+  facebook: aishikrehman
+  linkedin: aishikrehman
+  github:  aishikrehman
+  phone: "+880 1601 6606 66"
+  url: https://aishikrehman.com/about/
+  picture: /assets/images/Aishik Rehman_Mymensingh_2019.jpg
+
+bn-title: "ঐশিক রেহমান"
+bn-author: "ঐশিক রেহমান"
+bn-author-name: "ঐশিক রেহমান"
+bn-author-url: "https://aishikrehman.com/about/bn/"
+
+#Social Media
+youtube_handle: "@aishikrehman"
+wikipedia_username: "Aishik Rehman"
+twitter_username: RehmanAishik  
+
+description: >- # this means to ignore newlines until "baseurl:"
+  This online digital database is the first of its kind and easily searchable to aid in the identification of plant species in Bangladesh.
+  The Bangladesh Forest Department (BFD) and the Bangladesh National Herbarium (BNH) under the Ministry of Environment, Forest and Climate Change (MoEFCC) developed this web based application with technical assistance from Food and Agriculture Organization of the United Nations (FAO).
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://flora.aishikrehman.com" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Build settings
+# থিম নিষ্ক্রিয় করা হয়েছে, অন্যান্য সেটিংস ধ্বংস করার ঝুঁকি থাকায় অনুগ্রহ করে এটি সক্রিয় করবেন না
+# theme: minima
+
+plugins:
+  - jekyll-seo-tag
