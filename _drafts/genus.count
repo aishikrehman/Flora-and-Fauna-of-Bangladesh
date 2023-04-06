@@ -1,6 +1,0 @@
-{% genus_count %}
-{% for page in site.pages %}
-  {% if page.Genus %}
-    <p>{{ page.Species }} has genus: {{ page.Genus }}</p>
-  {% endif %}
-{% endfor %}
