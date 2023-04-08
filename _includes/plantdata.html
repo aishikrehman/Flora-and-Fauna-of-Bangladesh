@@ -1,4 +1,4 @@
-<title>{% if page.title %}{{ page.title }}{% elsif page.Species %}{{page.Species}}{% else %}{{ site.title }}</title>
+<title>{% if page.title %}{{ page.title }}{% elsif page.Species %}{{page.Species}}{% else %}{{ site.title }}{% endif %}</title>
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% elsif page.Species %}{{page.Species}}{% else %}{{ site.title }}{% endif %}">
 <meta property="og:type" content="{% if page.path contains '_posts' %}article{% else %}website{% endif %}">
 <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
