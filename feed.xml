@@ -1,0 +1,104 @@
+---
+layout: none
+---
+<?xml version="1.0" encoding="utf-8"?>
+{% if page.xsl %}
+<?xml-stylesheet type="text/xml" href="{{ '/feed.xslt.xml' | absolute_url }}"?>
+{% endif %}
+<feed xmlns="http://www.w3.org/2005/Atom" {% if site.lang %}xml:lang="{{ site.lang }}" {% endif %}>
+    <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
+    <link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml" />
+    <link href="{{ '/' | absolute_url }}" rel="alternate" type="text/html" {% if site.lang %}hreflang="{{ site.lang }}"
+        {% endif %} />
+    <updated>{{ site.time | date_to_xmlschema }}</updated>
+    <id>{{ page.url | absolute_url | xml_escape }}</id>
+
+    {% assign title = site.title | default: site.name %}
+    {% if page.collection != "posts" %}
+    {% assign collection = page.collection | capitalize %}
+    {% assign title = title | append: " | " | append: collection %}
+    {% endif %}
+
+    {% if title %}
+    <title type="html">{{ title | smartify | xml_escape }}</title>
+    {% endif %}
+
+    {% if site.description %}
+    <subtitle>{{ site.description | xml_escape }}</subtitle>
+    {% endif %}
+
+    {% if site.author %}
+    <author>
+        <name>{{ site.author.name | default: site.author | xml_escape }}</name>
+        {% if site.author.email %}
+        <email>{{ site.author.email | xml_escape }}</email>
+        {% endif %}
+        {% if site.author.uri %}
+        <uri>{{ site.author.uri | xml_escape }}</uri>
+        {% endif %}
+    </author>
+    {% endif %}
+
+    {% assign pages = site.pages | where: "layout", "plant" %}
+    {% for page in pages %}
+    <entry>
+        {% assign page_title = page.Species | smartify | strip_html | normalize_whitespace | xml_escape %}
+
+        <title type="html">{{ page_title }}</title>
+        <link href="{{ page.url | absolute_url }}" rel="alternate" type="text/html" title="{{ page_title }}" />
+
+        <updated>{{ site.time | date_to_xmlschema }}</updated>
+        <id>{{ page.id | absolute_url | xml_escape }}</id>
+        {% assign excerpt_only = page.feed.excerpt_only | default: site.feed.excerpt_only %}
+        {% unless excerpt_only %}
+        <content type="html" xml:base="{{ page.url | absolute_url | xml_escape }}">
+            <![CDATA[{%- include content.en.html -%}]]>
+        </content>
+        {% endunless %}
+
+        {% assign page_author = page.author | default: page.authors[0] | default: site.author %}
+        {% assign page_author = site.data.authors[page_author] | default: page_author %}
+        {% assign page_author_email = page_author.email | default: nil %}
+        {% assign page_author_uri = page_author.uri | default: nil %}
+        {% assign page_author_name = page_author.name | default: page_author %}
+
+        <author>
+            <name>{{ page_author_name | default: "" | xml_escape }}</name>
+            {% if page_author_email %}
+            <email>{{ page_author_email | xml_escape }}</email>
+            {% endif %}
+            {% if page_author_uri %}
+            <uri>{{ page_author_uri | xml_escape }}</uri>
+            {% endif %}
+        </author>
+
+        {% if page.category %}
+        <category term="{{ page.category | xml_escape }}" />
+        {% elsif page.categories %}
+        {% for category in page.categories %}
+        <category term="{{ category | xml_escape }}" />
+        {% endfor %}
+        {% elsif page.Genus %}
+        <category term="{{ page.layout }}" />
+        <category term="{{ page.Family | xml_escape }}" />
+        <category term="{{ page.Genus | xml_escape }}" />
+        {% endif %}
+
+        {% assign page_summary = page.Description | default: page.excerpt %}
+        {% if page_summary and page_summary != empty %}
+        <summary type="html">
+            <![CDATA[{{ page_summary | strip_html | normalize_whitespace }}]]>
+        </summary>
+        {% endif %}
+
+        {% assign page_image = page.image.path | default: page.img %}
+        {% if page_image %}
+        {% unless page_image contains "://" %}
+        {% assign page_image = page_image | absolute_url %}
+        {% endunless %}
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ page_image | xml_escape }}" />
+        <media:content medium="image" url="{{ page_image | xml_escape }}" xmlns:media="http://search.yahoo.com/mrss/" />
+        {% endif %}
+        </entry>
+        {% endfor %}
+</feed>

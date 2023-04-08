@@ -1,0 +1,67 @@
+---
+layout: base
+---
+<div class="bs-slider vh-80 d-flex justify-content-center align-items-center">
+    <div class="container carousel slide text-white" data-bs-interval="6000" data-bs-ride="carousel" id="QuoteCarousel"
+        style="background-color: rgb(255 255 255 / 11%);">
+        <div class="carousel-indicators">
+            <li data-bs-slide-to="0" data-bs-target="#QuoteCarousel" type="button" class="active" aria-current="true">
+            </li>
+            <li data-bs-slide-to="1" data-bs-target="#QuoteCarousel" type="button" class=""></li>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item text-center active p-5">
+                <p class="h3 text-uppercase">plant species identification module</p><br>
+                <h4>This online digital database is the first of its kind and easily
+                    searchable to aid in the identification of plant species in Bangladesh. The Bangladesh Forest
+                    Department (BFD) and the Bangladesh National Herbarium (BNH) under the Ministry of Environment,
+                    Forest and Climate Change (MoEFCC)
+                    developed this web based application with technical assistance from Food and Agriculture
+                    Organization of the United Nations (FAO).
+                </h4>
+            </div>
+            <div class="carousel-item text-center p-5">
+                <p class="h3 text-uppercase">Contribute!!</p><br>
+                <h4>As an open-source repository, your contributions are welcome here. We
+                    are trying to make it bilingual, supporting both English and Bengali. If possible, we will also try
+                    to include minor languages spoken in Bangladesh. Thank you for your understanding. If you want to
+                    improve this page, please make changes and submit a pull request to merge your changes.
+                </h4>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container p-5">
+    <h3 class="py-3">Currently avilable plants </h3>
+    {% assign pages = site.pages | where: "layout", "plant" | sort: "title" %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="SL.">Serial</td>
+                <td class="family">Family</td>
+                <td class="genus">Genus</td>
+                <td class="Species">Species</td>
+                <td class="url">Alangiaceae</td>
+            </tr>
+            {% for page in pages %}
+            <tr>
+                <td class="SL.">{{ forloop.index }}</td>
+                <td class="family">{{ page.Family }}</td>
+                <td class="genus">{{ page.Genus }}</td>
+                <td class="Species">{{ page.Species }}</td>
+                <td class="url"><a href="{{ page.url }}">{{ page.url }}</a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .bs-slider {
+        background-image: url(https://wallpapers.com/images/featured/aejsnzajs1bhrqw1.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>

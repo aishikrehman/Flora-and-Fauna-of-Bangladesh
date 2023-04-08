@@ -1,0 +1,77 @@
+---
+layout: base
+lang: en
+---
+<div class="container-xxl docs-layout">
+  {% include aside.html %}
+  <main class="docs-main order-1 my-md-4">
+    <article class="post h-entry container pt-50">
+      <div class="e-content row">
+        <h2><em>
+            {%- if page.title -%}
+            {{ page.title }}
+            {%- else -%}
+            {{ page.Species }}
+            {%- endif -%}</em></h2>
+        <em class="pb-3"> {{page.Author}} </em>
+        
+        {%- if page.Synonyms -%}
+        <h6 class="pb-3">Also Known as {{page.Synonyms}} </h6>
+        {%- endif -%}
+      
+        <div class="col-lg-8 pe-lg-5 order-2 order-md-1" style="font-size:large">
+          {%- include content.en.html -%}
+
+        </div>
+        <div class="col-lg-4 infobox order-1 order-md-2">
+          <div class="wrapper p-2" style="border: 1px solid #f0f0f0;">
+            <div class="text-center pb-2">
+              <strong>Infobox</strong>
+            </div>
+            <table class="table">
+              <tbody>
+                {%- if page.Family -%}
+                <tr>
+                  <td class="family">Family</td>
+                  <td class="{{page.Family}}">{{page.Family}}</td>
+                </tr>
+                <tr>
+                  <img src="{{page.img}}" alt="{{page.Species}}" class="p-2 mw-100">
+                </tr>
+                {%- endif -%}
+                <tr>
+                  <td>Genus</td>
+                  <td>{{page.Genus}}</td>
+                </tr>
+                <tr>
+                  <td>Species</td>
+                  <td>{{page.Species}}</td>
+                </tr>
+                <tr>
+                  <td>Author</td>
+                  <td>{{page.Author}}</td>
+                </tr>
+                <tr>
+                  <td>Synonyms</td>
+                  <td>{{page.Synonyms}}</td>
+                </tr>
+                <tr>
+                  <td>Distribution</td>
+                  <td>{{page.Distribution}}</td>
+                </tr>
+                <tr>
+                  <td>Local Name</td>
+                  <td>{{page.Local_Name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </article>
+  </main>
+</div>
+{% if page.footer != false %}
+{% include footer.html %}
+{% endif %}

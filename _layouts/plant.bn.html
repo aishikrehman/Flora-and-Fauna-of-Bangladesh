@@ -1,0 +1,86 @@
+---
+layout: base
+---
+<div class="container-xxl docs-layout">
+  {% include aside.html %}
+  <main class="docs-main order-1 my-md-4">
+    <article class="post h-entry container pt-50">
+      <div class="e-content row">
+        <h2>
+            {%- if page.title -%}
+            {{ page.title }}
+            {%- else -%}
+            {{ page.Species }}
+            {%- endif -%}</h2>
+            <span class="pb-3"> {{page.Species}} </span>
+        <div class="col-lg-8 pe-lg-5 order-2 order-md-1" style="font-size:large">
+          <div class="description">
+            {{ page.title }} হলো {{ page.Family }} পরিবারের {{ page.Genus }} গণের অন্তর্ভুক্ত একটি উদ্ভিদ প্রজাতি। এটি {{ page.keys}} নামেও পরিচিত।  ইংরেজিতে এটি {{ page.english_name }} নামে পরিচিত। এর দ্বিপদী নাম {{ page.Species}} যা উদ্ভিদবিদ {{ page.Author }} প্রস্তাব করেছিলেন।
+            এর পাশাপাশি এটি ভিন্ন যেমন- {{ page.Synonyms }} দ্বিপদী নামেও উল্লেখ করা হয়ে থাকে। এর পাতার আকার {{ page["Leaf Type"]}} এবং পত্রবিন্যাসের ধরণ {{ page["Leaf Arrangement"]}}। 
+            
+            {%- if page.img2 -%}
+            <img src="{{ page.img2 }}" alt="{{ page.Species }}" class="py-3 mw-100">
+            {%- endif -%}
+
+            {{ page.Description }}
+
+            {%- if page.img3 -%}
+            <img src="{{ page.img3 }}" alt="{{ page.Species }}" class="py-3 mw-100">
+            {%- endif -%}
+
+            {{ content }}
+
+          </div>
+
+        </div>
+        <div class="col-lg-4 infobox order-1 order-md-2">
+          <div class="wrapper p-2" style="border: 1px solid #f0f0f0;">
+            <div class="text-center pb-2">
+              <strong>তথ্যছক</strong>
+            </div>
+            <table class="table">
+              <tbody>
+                {%- if page.Family -%}
+                <tr>
+                  <td class="family">Family</td>
+                  <td class="{{page.Family}}">{{page.Family}}</td>
+                </tr>
+                <tr>
+                  <img src="{{page.img}}" alt="{{page.Species}}" class="p-2 mw-100">
+                </tr>
+                {%- endif -%}
+                <tr>
+                  <td>Genus</td>
+                  <td>{{page.Genus}}</td>
+                </tr>
+                <tr>
+                  <td>Species</td>
+                  <td>{{page.Species}}</td>
+                </tr>
+                <tr>
+                  <td>Author</td>
+                  <td>{{page.Author}}</td>
+                </tr>
+                <tr>
+                  <td>Synonyms</td>
+                  <td>{{page.Synonyms}}</td>
+                </tr>
+                <tr>
+                  <td>Distribution</td>
+                  <td>{{page.Distribution}}</td>
+                </tr>
+                <tr>
+                  <td>Local Name</td>
+                  <td>{{page.Local_Name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</div>
+{% if page.footer != false %}
+{% include footer.html %}
+{% endif %}

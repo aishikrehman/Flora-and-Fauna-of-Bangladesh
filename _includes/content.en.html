@@ -1,0 +1,37 @@
+<div class="description">
+    {{ page.Species }} is a tree species under the {{ page.Family }} family, and belongs to the {{ page.Genus }} genus. 
+    <p>
+    The species name is {{ page.Species }}, and was named by {{ page.Author }}.
+    It has several synonyms including {{ page.Synonyms }}.
+    The species can be found in the {{ page.Distribution }} region and grows in {{ page.Habitat }} habitats. 
+    Its flowering period is from {{ page["Flowering Period"] }}, and it produces a {{ page.Fruit }} fruit. 
+    The {{page["Floral Symmetry"] }} flowers have {{ page["Floral Attachment"] }} attachment and {{ page["Corolla Aestivation"] }} aestivation. 
+    The floral type is {{ page["Floral Type"] }} and it has {{ page["Sexual Reproductive Unit"] }} as its sexual reproductive unit.
+    </p>
+    <p>
+    The species has a {{ page["Bark Texture"]}} bark texture, and has a branched {{ page.Bole }}. 
+    The {{ page.Habit }} does not have thorns, and the leaves are {{ page["Leaf Type"] }} and have {{ page["Leaf Arrangement"]}} arrangement.
+    The leaves are {{ page["Leaf Venation"] }} and have a petiolate {{ page.Petiole }}. 
+    The stipules are {{ page.Stipules }}.
+    </p>
+    <p>
+    The species has several local names including {{ page["Local_names"] | join: ", " }}.
+    It has several uses, including medicinal and ornamental purposes, among others.
+    </p>
+    <div class="nb-small">N.B. Its semi-automatic generated information based on some data we recieved from Bangladesh Forest Department.</div>
+    {%- if page.img2 -%}
+    <img src="{{ page.img2 }}" alt="{{ page.Species }}" class="py-3 mw-100">
+    {%- endif -%}
+    {%- if page.img3 -%}
+    <img src="{{ page.img3 }}" alt="{{ page.Species }}" class="mw-100">
+    {%- endif -%}
+
+    {{ content }}
+
+    <h4 class="pt-5">Further raw data that possibly might be helpfull</h4>
+    <div class="text-muted"> 
+    {{ page.Description }}
+    <br>
+    <div class="nb-small">N.B. This raw data collected and provided by Bangladesh National Herbarium. </div>
+    </div>
+  </div>
